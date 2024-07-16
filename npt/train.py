@@ -656,7 +656,7 @@ class Trainer:
             target_dict = dict(sorted(self.dataset.cv_dataset.old_indice_to_target_val.items()))
         
         target_array = np.vstack(list(target_dict.values())).flatten()
-        target_tensors = torch.as_tensor(target_array.astype(np.float),
+        target_tensors = torch.as_tensor(target_array.astype(np.float64),
                                          dtype=torch.int8).squeeze()
                 
         val_tensors = torch.stack(list(val_score.values())).squeeze()
