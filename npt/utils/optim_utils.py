@@ -41,6 +41,11 @@ class Lookahead(Optimizer):
             for group in self.param_groups:
                 group.setdefault(name, default)
 
+    def _optimizer_step_code(self):
+        if hasattr(self.optimizer, '_optimizer_step_code'):
+            return self.optimizer._optimizer_step_code()
+        return None
+
     def update_slow(self, group):
         for fast_p in group["params"]:
             if fast_p.grad is None:
