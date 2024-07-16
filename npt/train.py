@@ -662,8 +662,8 @@ class Trainer:
         val_tensors = torch.stack(list(val_score.values())).squeeze()
         
         pr_curve = BinaryPrecisionRecallCurve(thresholds=None)
-        avg_prec = AveragePrecision(task="binary", pos_label=1)
-        auroc = AUROC(task="binary", pos_label=1)
+        avg_prec = AveragePrecision(task="binary")
+        auroc = AUROC(task="binary")
         
         #normalize val_score
         val_tensors = ((val_tensors - torch.mean(val_tensors)) 
